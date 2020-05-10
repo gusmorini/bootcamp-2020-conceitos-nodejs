@@ -10,10 +10,16 @@ app.use(cors());
 
 const repositories = [];
 
+/**
+ * lista os repositórios
+ */
 app.get("/repositories", (request, response) => {
   return response.json(repositories);
 });
 
+/**
+ * cria um repositório
+ */
 app.post("/repositories", (request, response) => {
   const { title, url, techs } = request.body;
 
@@ -30,6 +36,9 @@ app.post("/repositories", (request, response) => {
   response.json(repository);
 });
 
+/**
+ * atualiza um repositorio
+ */
 app.put("/repositories/:id", (request, response) => {
   const { id } = request.params;
 
@@ -53,6 +62,9 @@ app.put("/repositories/:id", (request, response) => {
   response.json(repository);
 });
 
+/**
+ * apaga um repositório
+ */
 app.delete("/repositories/:id", (request, response) => {
   const { id } = request.params;
 
@@ -67,6 +79,9 @@ app.delete("/repositories/:id", (request, response) => {
   return response.status(204).send();
 });
 
+/**
+ * da like em um repositório
+ */
 app.post("/repositories/:id/like", (request, response) => {
   const { id } = request.params;
 
